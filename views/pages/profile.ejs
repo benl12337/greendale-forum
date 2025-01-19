@@ -1,0 +1,21 @@
+<html>
+<%- include ('../partials/navbar.ejs', {user: user}) %>
+
+    <!-- Print the user membership status -->
+    <h2>Your membership status is:
+
+            <% if (user.admin) { %>
+            <span>FACULTY</span>
+            <% } else { %>
+                   <span>STUDENT</span>
+                   <h3>If you are faculty, type in the password provided by the Dean</h3>
+                   <h4>HINT: Who is the best Dean in the whole world? (all lowercase, no spaces)</h4>
+                   <form method="post">
+                    <input type="password" name="profilePassword">
+                    <a><button>Submit</button></a>
+                </form>
+            <% } %>
+
+    </h2>
+
+</html>

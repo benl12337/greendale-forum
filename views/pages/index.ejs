@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/index.css">
+      </head>
+ <body>
+    <%- include ('../partials/navbar.ejs', {user: user}) %>
+<% if (user) { %>
+    <h1>Welcome back, <%=user.first_name%> <%=user.last_name%></h1>
+<% } else { %>
+    <h1>Please log-in to make posts</h1>
+<% } %>
+<!-- Map the messages posted below -->
+ <% messages.map((message)=>{ %>
+    <%- include('../partials/post.ejs', {message:message}) %>
+ <% }) %>
+ </body>
+</html>

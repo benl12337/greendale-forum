@@ -1,0 +1,16 @@
+<html>
+<%- include ('../partials/navbar.ejs', {user: user}) %>
+
+<% if (!user) { %>
+    <!-- If not logged in, prompt user to login -->
+    <a href="/register"><button>REGISTER</button></a>
+    <a href="/login"><button>LOGIN</button></a>
+<% } else { %>
+    <!-- If logged in, allow user to create post -->
+    <form method="POST">
+        <label for="message">Message:</label>
+        <textarea name="message"></textarea>
+        <button type="submit" >Post</button>
+    </form>
+<% } %>
+</html>

@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/post.css">
+
+<div class="post">
+ <%   if (user) { %>
+     <%   if (user.admin) { %>
+            <div class="post-header"><span class="msg-user">@<%=message.username%></span><span class="msg-date"><%=message.date%></span></div>  
+    <%    } else { %>
+            <div class="post-header"><span class="msg-user">Anonymous User</span><span class="msg-date"><%=message.date%></span></div>  
+      <%  } %>
+<%    } else { %>
+        <div class="post-header"><span class="msg-user">Anonymous User</span><span class="msg-date"><%=message.date%></span></div>  
+  <%  } %>
+    <div class="message-content"><%=message.message%></div>
+</div>

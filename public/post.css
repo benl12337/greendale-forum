@@ -1,0 +1,30 @@
+.post {
+    border: 1px solid rgb(110, 110, 213);
+    width: 75%;
+    background: #1c3c8b;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    justify-content: space-evenly
+}
+
+.post-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.message-content {
+    color: white;
+    width: 100%;
+}
+
+.msg-user {
+    color: white;
+    font-weight: bolder;
+}
+
+.msg-date {
+    color: rgb(224, 211, 211);
+}

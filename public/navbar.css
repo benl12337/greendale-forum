@@ -1,0 +1,12 @@
+nav a {
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 10px;
+    color: white;
+}
+
+nav a:hover {
+    background: rgb(16, 16, 157);
+    transition: 300ms ease;
+}

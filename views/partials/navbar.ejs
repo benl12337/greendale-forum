@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/navbar.css">
+
+<% if (user) { %>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/profile">Profile</a>
+        <a href="/create-post" class="create-btn">New post</a>
+        <a href="/logout">Log Out</a>
+    </nav>
+<% } else { %>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="/create-post" class="create-btn">New post</a>
+    </nav>
+<% } %>
+
