@@ -1,12 +1,14 @@
 .post {
     border: 1px solid rgb(110, 110, 213);
     width: 75%;
-    background: #1c3c8b;
     min-height: 100px;
     display: flex;
     flex-direction: column;
     padding: 25px;
-    justify-content: space-evenly
+    justify-content: space-evenly;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 5px;
 }
 
 .post-header {
@@ -20,9 +22,17 @@
     width: 100%;
 }
 
-.msg-user {
+.full-name {
     color: white;
-    font-weight: bolder;
+    font-weight: bold;
+}
+
+.user-div {
+    display: flex;
+}
+
+.msg-username {
+    color: rgb(224, 211, 211);
 }
 
 .msg-date {

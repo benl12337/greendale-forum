@@ -1,8 +1,10 @@
 const genPassword = require("../lib/passwordUtils").genPassword;
 const{ formatDistance } = require("date-fns");
+const ejs = require('ejs');
 
 const db = require("../db/queries").queries;
 const passport = require("passport");
+
 
 const usersController = {
 
@@ -15,22 +17,36 @@ const usersController = {
             return {...message, date: formattedDate}
         })
 
-        res.render("pages/index", {
+        res.render("layout", {
+            bodyContent: 'pages/index.ejs',
+            title: 'Greendale Forums',
             messages: formattedMessages,
             user: req.user
         });
+
     },
 
     registerGet: async (req, res, next) => {
-        res.render("pages/register");
+        res.render("layout", {bodyContent: 'pages/register.ejs', user: req.user});
     },
 
     createPostGet: async (req, res, next) => {
-        res.render("pages/createPost", { user: req.user })
+        res.render("layout", { bodyContent: 'pages/createPost.ejs', user: req.user })
     },
 
     profileGet: async (req, res, next) => {
-        res.render("pages/profile", { user: req.user });
+        res.render("layout", { bodyContent: 'pages/profile.ejs', user: req.user });
+    },
+
+    loginGet: (req,res,next) => {
+        res.render("layout", {bodyContent: 'pages/login', user: req.user });
+    },
+
+    demotePut: async (req,res,next) => {
+        const userId = req.user.user_id;
+        await db.demoteUser(userId);
+        console.log('demoting...');
+        res.redirect("/");
     },
 
     registerPost: async (req, res, next) => {

@@ -1,9 +1,8 @@
 html {
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 50px;
-    background: #122a69;
+    background: #081842;
     font-family: sans-serif;
     font-weight: lighter;
 }
@@ -12,8 +11,51 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+}
+
+.timeline {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
     color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 2rem;
+}
+
+form input {
+    font-size: 2rem;
+    border-radius: 12px;
+}
+
+form button {
+    padding: 15px;
+    font-size: 2rem;
+}
+
+h2,h4 {
+    color: white;
+}
+
+
+.membership {
+    color: rgb(247, 183, 63);
+}
+
+form {
+    width: 40%;
+}
+
+textarea {
+    width: 25%;
+    min-height: 150px;
 }

@@ -7,13 +7,12 @@ indexRouter.post('/register', users.registerPost);
 indexRouter.post('/login', users.loginPost);
 indexRouter.post('/create-post', users.createPostPost);
 indexRouter.post('/profile', users.profilePost);
+indexRouter.post("/demote", users.demotePut);
 
-// GET ROUTES
+// GET ROUTES   
 indexRouter.get("/", users.indexGet);
 indexRouter.get("/register", users.registerGet);
-indexRouter.get("/login", (req, res, next) => {
-    res.render("pages/login");
-});
+indexRouter.get("/login", users.loginGet);
 indexRouter.get("/profile", users.profileGet)
 indexRouter.get("/create-post", users.createPostGet);
 indexRouter.get("/logout", (req, res, next) => {
@@ -24,5 +23,6 @@ indexRouter.get("/logout", (req, res, next) => {
         res.redirect("/");
     })
 });
+
 
 module.exports = indexRouter;

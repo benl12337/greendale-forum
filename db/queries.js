@@ -36,6 +36,10 @@ const queries = {
         await connection.query("UPDATE users SET admin = true WHERE user_id=$1", [userId]);
     },
 
+    demoteUser: async(userId) => {
+        await connection.query("UPDATE users SET admin = false WHERE user_id=$1", [userId]);
+    },
+
     getSession: async() => {
         const { rows } = await connection.query('SELECT * FROM session');
         return rows;

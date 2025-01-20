@@ -1,5 +1,3 @@
-<html>
-<%- include ('../partials/navbar.ejs', {user: user}) %>
 
 <% if (!user) { %>
     <!-- If not logged in, prompt user to login -->
@@ -13,4 +11,3 @@
         <button type="submit" >Post</button>
     </form>
 <% } %>
-</html>

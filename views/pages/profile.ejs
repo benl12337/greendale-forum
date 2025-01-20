@@ -1,13 +1,11 @@
-<html>
-<%- include ('../partials/navbar.ejs', {user: user}) %>
-
-    <!-- Print the user membership status -->
+ <!-- Print the user membership status -->
     <h2>Your membership status is:
 
             <% if (user.admin) { %>
-            <span>FACULTY</span>
+            <span class="membership">FACULTY</span>
+            <h4>You may revert your status</h4><form action="/demote" method="post"><button>here</button></form>
             <% } else { %>
-                   <span>STUDENT</span>
+                   <span class="membership">STUDENT</span>
                    <h3>If you are faculty, type in the password provided by the Dean</h3>
                    <h4>HINT: Who is the best Dean in the whole world? (all lowercase, no spaces)</h4>
                    <form method="post">
@@ -15,7 +13,5 @@
                     <a><button>Submit</button></a>
                 </form>
             <% } %>
-
     </h2>
 
-</html>

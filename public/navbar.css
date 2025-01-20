@@ -2,11 +2,11 @@ nav a {
     text-decoration: none;
     padding: 10px 15px;
     margin: 5px;
-    border-radius: 10px;
     color: white;
+    border-bottom: 0px solid black;
 }
 
 nav a:hover {
-    background: rgb(16, 16, 157);
+    border-bottom: 1px solid white;
     transition: 300ms ease;
 }
