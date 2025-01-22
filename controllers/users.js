@@ -20,7 +20,7 @@ const usersController = {
         res.render("layout", {
             bodyContent: 'pages/index.ejs',
             title: 'Greendale Forums',
-            messages: formattedMessages,
+            messages: messages ? formattedMessages : [],
             user: req.user
         });
 
