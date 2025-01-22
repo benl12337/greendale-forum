@@ -12,17 +12,22 @@ const usersController = {
     indexGet: async (req, res, next) => {
         const messages = await db.getAllMessages();
 
-        const formattedMessages = messages.map((message)=>{
-            const formattedDate= formatDistance(message.date, new Date(), {addSuffix: true});
-            return {...message, date: formattedDate}
-        })
-
-        res.render("layout", {
-            bodyContent: 'pages/index.ejs',
-            title: 'Greendale Forums',
-            messages: messages ? formattedMessages : [],
-            user: req.user
-        });
+        if (messages) {
+            console.log('messagessss');
+            const formattedMessages = messages.map((message)=>{
+                const formattedDate= formatDistance(message.date, new Date(), {addSuffix: true});
+                return {...message, date: formattedDate}
+            })
+    
+            res.render("layout", {
+                bodyContent: 'pages/index.ejs',
+                title: 'Greendale Forums',
+                messages:formattedMessages,
+                user: req.user
+            });
+        } else {
+            res.send("No posts exist yet");
+        }
 
     },
 

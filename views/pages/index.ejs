@@ -7,13 +7,7 @@
 
 <!-- Map the messages posted below -->
 <div class="timeline">
-  <%  if (messages) { %>
     <% messages.map((message)=>{ %>
         <%- include('../partials/post.ejs', {message:message}) %>
      <% }) %>
- <%   } else { %>
-        <h2>No messages posted yet</h2>
-  <%  } %>
-
-
 </div>
