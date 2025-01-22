@@ -61,7 +61,6 @@ const usersController = {
         const exists = await db.getUserByUsername(req.body.username);
         if (exists) {
             res.redirect("/register");
-
         } else {
             const hashedPassword = await genPassword(req.body.password); // generate the password hash
             await db.createUser(req.body.first_name, req.body.last_name, req.body.username, hashedPassword); // insert user into database
