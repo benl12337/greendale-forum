@@ -11,8 +11,10 @@
     <%    } else { %>
             <div class="post-header"><span class="msg-username">Anonymous User</span><span class="msg-date"><%=message.date%></span></div>  
       <%  } %>
+      <div class="message-content"><%=message.message%></div>
 <%    } else { %>
         <div class="post-header"><span class="msg-username">Anonymous User</span><span class="msg-date"><%=message.date%></span></div>  
+        <div class="message-content">Message hidden</div>
   <%  } %>
-  <div class="message-content"><%=message.message%></div>
+  
 </div>
