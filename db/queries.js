@@ -29,6 +29,9 @@ const queries = {
     },
 
     createPost: async(userId, message) => {
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        console.log('the users current date time is', timezone);
         await connection.query("INSERT INTO messages (user_id, message, date) VALUES ($1,$2, $3)", [userId, message, new Date()]);
     },
 
