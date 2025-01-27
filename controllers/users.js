@@ -18,7 +18,6 @@ const usersController = {
 
             const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-            console.log('messagessss');
             const formattedMessages = messages.map((message) => {
                 const newDate = fromZonedTime(message.date, userTimezone);
                 const currDate = fromZonedTime(new Date(), userTimezone);
@@ -57,14 +56,12 @@ const usersController = {
     demotePut: async (req, res, next) => {
         const userId = req.user.user_id;
         await db.demoteUser(userId);
-        console.log('demoting...');
         res.redirect("/");
     },
 
     registerPost: async (req, res, next) => {
 
         // check if username exists, if it exists redirect to login
-        console.log(db.getUserByUsername);
         const exists = await db.getUserByUsername(req.body.username);
         if (exists) {
             res.redirect("/register");
@@ -77,9 +74,7 @@ const usersController = {
 
     createPostPost: async (req, res, next) => {
         // insert the message content into the db
-        console.log('message is', req.body.message);
         try {
-            console.log('creating message from user: ', req.user.user_id);
             await db.createPost(req.user.user_id, req.body.message);
         } catch (err) {
             console.log(err);

@@ -4,13 +4,11 @@ const queries = {
 
     getAllUsers: async() => {
         const { rows } = await connection.query('SELECT * FROM users');
-        console.log(rows);
         return rows;
     },
 
     getAllMessages: async() => {
         const { rows } = await connection.query('SELECT * FROM messages LEFT JOIN users ON messages.user_id = users.user_id ORDER BY date DESC');
-        console.log(rows);
         return rows;
     },
 
@@ -29,9 +27,7 @@ const queries = {
     },
 
     createPost: async(userId, message) => {
-        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-        console.log('the users current date time is', timezone);
         await connection.query("INSERT INTO messages (user_id, message, date) VALUES ($1,$2, $3)", [userId, message, new Date()]);
     },
 

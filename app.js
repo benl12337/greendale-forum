@@ -47,7 +47,3 @@ app.use(routes);
 
 // SERVER
 app.listen(3000, ()=>console.log('Server is running'));
-const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-console.log('the users current date time is', timezone);
-
