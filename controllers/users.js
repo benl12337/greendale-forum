@@ -39,8 +39,8 @@ const usersController = {
         res.render("layout", { bodyContent: 'pages/createPost.ejs', user: req.user })
     },
 
-    profileGet: async (req, res, next) => {
-        res.render("layout", { bodyContent: 'pages/profile.ejs', user: req.user });
+    membershipGet: async (req, res, next) => {
+        res.render("layout", { bodyContent: 'pages/membership.ejs', user: req.user });
     },
 
     loginGet: (req,res,next) => {
@@ -81,16 +81,16 @@ const usersController = {
         res.redirect("/");
     },
 
-    profilePost: async (req, res, next) => {
+    membershipPost: async (req, res, next) => {
         if (req.body.profilePassword == 'craigpelton') {
             try {
                 await db.upgradeUser(req.user.user_id);
-                res.redirect("/profile");
+                res.redirect("/membership");
             } catch (err) {
                 console.log(err);
             }
         } else {
-            res.redirect("/profile");
+            res.redirect("/membership");
         }
     },
 
