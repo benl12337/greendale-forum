@@ -1,10 +1,12 @@
 <div class="post">
+      <!-- Check if user exists, if not then hide username & message -->
  <%   if (user) { %>
+      <!-- Flag if the user is faculty or not -->
      <%   if (user.admin) { %>
             <div class="post-header">
                   <div class="user-div">
                         <div class="full-name"><%=message.first_name%> <%=message.last_name%>&nbsp;•</div>
-                  <span class="msg-username">&nbsp;@<%=message.username%></span>
+                  <a href="/users/<%=message.user_id%>"><span class="msg-username">&nbsp;@<%=message.username%></span></a>
             </div>
                   <span class="msg-date"><%=message.date%></span>
             </div>  

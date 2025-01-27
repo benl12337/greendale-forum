@@ -1,5 +1,6 @@
 const genPassword = require("../lib/passwordUtils").genPassword;
-const{ formatDistance } = require("date-fns");
+const { formatDistance } = require("date-fns");
+const { fromZonedTime } = require("date-fns-tz");
 const ejs = require('ejs');
 
 const db = require("../db/queries").queries;
@@ -12,17 +13,23 @@ const usersController = {
     indexGet: async (req, res, next) => {
         const messages = await db.getAllMessages();
 
+
         if (messages) {
+
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
             console.log('messagessss');
-            const formattedMessages = messages.map((message)=>{
-                const formattedDate= formatDistance(message.date, new Date(), {addSuffix: true});
-                return {...message, date: formattedDate}
+            const formattedMessages = messages.map((message) => {
+                const newDate = fromZonedTime(message.date, userTimezone);
+                const currDate = fromZonedTime(new Date(), userTimezone);
+                const formattedDate = formatDistance(newDate, currDate, { addSuffix: true });
+                return { ...message, date: formattedDate }
             })
-    
+
             res.render("layout", {
                 bodyContent: 'pages/index.ejs',
                 title: 'Greendale Forums',
-                messages:formattedMessages,
+                messages: formattedMessages,
                 user: req.user
             });
         } else {
@@ -32,7 +39,7 @@ const usersController = {
     },
 
     registerGet: async (req, res, next) => {
-        res.render("layout", {bodyContent: 'pages/register.ejs', user: req.user});
+        res.render("layout", { bodyContent: 'pages/register.ejs', user: req.user });
     },
 
     createPostGet: async (req, res, next) => {
@@ -43,11 +50,11 @@ const usersController = {
         res.render("layout", { bodyContent: 'pages/membership.ejs', user: req.user });
     },
 
-    loginGet: (req,res,next) => {
-        res.render("layout", {bodyContent: 'pages/login', user: req.user });
+    loginGet: (req, res, next) => {
+        res.render("layout", { bodyContent: 'pages/login', user: req.user });
     },
 
-    demotePut: async (req,res,next) => {
+    demotePut: async (req, res, next) => {
         const userId = req.user.user_id;
         await db.demoteUser(userId);
         console.log('demoting...');
