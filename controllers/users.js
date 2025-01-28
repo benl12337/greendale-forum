@@ -16,12 +16,8 @@ const usersController = {
 
         if (messages) {
 
-            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
             const formattedMessages = messages.map((message) => {
-                const newDate = fromZonedTime(message.date, userTimezone);
-                const currDate = fromZonedTime(new Date(), userTimezone);
-                const formattedDate = formatDistance(newDate, currDate, { addSuffix: true });
+                const formattedDate = formatDistance(message.date, new Date(), { addSuffix: true });
                 return { ...message, date: formattedDate }
             })
 
@@ -33,8 +29,18 @@ const usersController = {
             });
         } else {
             res.send("No posts exist yet");
-        }
+            }
 
+    },
+
+    profileGet: async(req, res, next) => {
+        console.log(req.params.userId);
+        const userPosts = await db.getUserMessages(req.params.userId);
+        const formattedPosts = userPosts.map((post) => {
+            const formattedDate = formatDistance(post.date, new Date(), { addSuffix: true });
+            return { ...post, date: formattedDate }
+        })
+        res.render("layout", { bodyContent: 'pages/profile.ejs', messages: formattedPosts, user: req.user });
     },
 
     registerGet: async (req, res, next) => {
@@ -97,7 +103,6 @@ const usersController = {
     },
 
     loginPost: passport.authenticate("local", { successRedirect: "/", failureRedirect: "/login", }),
-
 }
 
 module.exports = usersController;

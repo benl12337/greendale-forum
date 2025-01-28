@@ -11,6 +11,7 @@ indexRouter.post("/demote", users.demotePut);
 
 // GET ROUTES   
 indexRouter.get("/", users.indexGet);
+indexRouter.get("/users/:userId", users.profileGet);
 indexRouter.get("/register", users.registerGet);
 indexRouter.get("/login", users.loginGet);
 indexRouter.get("/membership", users.membershipGet)

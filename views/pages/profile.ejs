@@ -1,0 +1,13 @@
+<!-- Show Profile Name -->
+<% if (user) { %>
+    <h1>Welcome back, <%=user.first_name%> <%=user.last_name%></h1>
+<% } else { %>
+    <h1>Please login or register to see posts</h1>
+<% } %>
+
+<!-- Map the messages posted below -->
+<div class="timeline">
+    <% messages.map((message)=>{ %>
+        <%- include('../partials/post.ejs', {message:message}) %>
+     <% }) %>
+</div>

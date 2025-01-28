@@ -12,6 +12,11 @@ const queries = {
         return rows;
     },
 
+    getUserMessages: async(userId) => {
+        const { rows } = await connection.query('SELECT * FROM messages LEFT JOIN users ON messages.user_id = users.user_id WHERE messages.user_id=$1', [userId]);
+        return rows;
+    },
+
     getUserByUsername: async(username) => {
         const { rows } = await connection.query('SELECT * FROM users WHERE username = $1', [username]);
         return rows[0];

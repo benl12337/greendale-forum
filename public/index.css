@@ -59,3 +59,11 @@ textarea {
     width: 25%;
     min-height: 150px;
 }
+
+.post-header a {
+    text-decoration: none;
+}
+
+.post-header a:hover {
+    opacity: 0.5;
+}
