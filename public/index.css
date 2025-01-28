@@ -66,4 +66,10 @@ textarea {
 
 .post-header a:hover {
     opacity: 0.5;
+    transition: 500ms;
+}
+
+.username-header {
+    color: lightgrey;
+    margin-bottom: 20px;
 }

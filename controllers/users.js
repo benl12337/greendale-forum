@@ -34,13 +34,22 @@ const usersController = {
     },
 
     profileGet: async(req, res, next) => {
-        console.log(req.params.userId);
-        const userPosts = await db.getUserMessages(req.params.userId);
+
+        // get the user id of current profile
+        const userId = req.params.userId;
+
+        // get user object of current profile and their posts
+        const currUser = await db.getUserById(userId);
+        const userPosts = await db.getUserMessages(userId);
+
+        // format the dates
         const formattedPosts = userPosts.map((post) => {
             const formattedDate = formatDistance(post.date, new Date(), { addSuffix: true });
             return { ...post, date: formattedDate }
         })
-        res.render("layout", { bodyContent: 'pages/profile.ejs', messages: formattedPosts, user: req.user });
+
+        // render the posts
+        res.render("layout", { bodyContent: 'pages/profile.ejs', messages: formattedPosts, user: req.user, profile: currUser });
     },
 
     registerGet: async (req, res, next) => {

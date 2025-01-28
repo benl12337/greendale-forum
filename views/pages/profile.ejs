@@ -1,6 +1,7 @@
-<!-- Show Profile Name -->
+<!-- Display the user's name -->
 <% if (user) { %>
-    <h1>Welcome back, <%=user.first_name%> <%=user.last_name%></h1>
+    <h1><%=profile.first_name%> <%=profile.last_name%></h1>
+    <span class="username-header">@<%=profile.username%></span>
 <% } else { %>
     <h1>Please login or register to see posts</h1>
 <% } %>
